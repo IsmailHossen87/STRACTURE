@@ -5,6 +5,7 @@ import pf from "../../assets/3135715.png";
 import logo from "../../assets/chanel_logo_the_branding_journal.jpg";
 import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Header = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -34,6 +35,10 @@ const Header = () => {
     setIsDarkMode(!isDarkMode);
     document.body.classList.toggle("dark-mode"); 
   };
+  const handleNavbar = ()=>{
+    logOut()
+    Swal.fire("Good job!", "logOut succesfuly", "success");  
+  }
 
   return (
     <div className={`navbar ${isDarkMode ? "dark-mode" : "bg-base-100"}`}>
@@ -88,7 +93,7 @@ const Header = () => {
                 <button className="btn btn-sm">{user.displayName}</button>
               </li>
               <li>
-                <button onClick={logOut} className="btn btn-sm">
+                <button onClick={handleNavbar} className="btn btn-sm">
                   Logout
                 </button>
               </li>

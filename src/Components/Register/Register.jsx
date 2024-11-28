@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-// import swal from "sweetalert";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
@@ -10,11 +9,12 @@ const Register = () => {
 
   const navigate = useNavigate();
   const { loginGoogle, createUserEmail, userUpdate } = useContext(AuthContext);
+//   FOR EMAIL
   const handleLogin = (media) => {
     media();
     navigate("/");
   };
-
+// MANUALLY SIGNup
   const handleCreate = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -40,27 +40,27 @@ const Register = () => {
     }
     createUserEmail(email,password)
       .then((res) => {
-        console.log(res.user);
         userUpdate(name, photo).then(() => {
           Swal.fire("Successfully", "Account created successfully", "success");
           navigate("/");
             setTimeout(() => {
                 window.location.reload();  
             }, 2*1000);
-         
+            
         });
       })
-      .catch((error) => {
-        console.log(error.message);
-        Swal.fire("Sorry", "Something wrong", "error");
-      });
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //     Swal.fire("Sorry", "Something wrong", "error");
+    //   });
+      form.reset();
   };
   return (
     <div>
       <div className="hero min-h-screen bg-base-200 ">
         <div className="hero-content flex-col w-full ">
           <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Register now!</h1>
+            <h1 className="text-5xl !text-black font-bold ">Register now!</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleCreate} className="card-body">
@@ -117,10 +117,10 @@ const Register = () => {
               </div>
             </form>
             <div className="">
-              <p className="flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased">
+              <p className="flex justify-center !text-black font-sans text-sm font-light leading-normal text-inherit antialiased">
                 You have an account?
                 <Link to="/login">
-                  <p className="text-red-600 ml-2 font-bold">Sing in</p>
+                  <p className="text-red-600 ml-2 font-bold">Login</p>
                 </Link>
               </p>
             </div>

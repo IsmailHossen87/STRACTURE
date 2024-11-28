@@ -12,7 +12,7 @@ const Login = () => {
   const handleloginGoogle = (media) => {
     media();
     navigate("/")
-    swal("Good job!", "You login succesfuly", "success");  
+    Swal.fire("Good job!", "You login succesfuly", "success");  
   };
 
   const handleLoginEmail = (e) => {
@@ -24,16 +24,15 @@ const Login = () => {
     loginByemail(email,password)
     .then(res => {
         console.log(res.user)
-        Swal("Good job!", "You login succesfuly", "success");  
+        Swal.fire("Good job!", "You login succesfuly", "success");  
 
         navigate("/")
 
-        // window.location.reload();
-        
+        // window.location.reload(); 
     })
     .catch(error =>{
         console.log(error.message)
-        Swal(
+        Swal.fire(
           "Sorry",
           "Something wrong",
           "error"
@@ -46,7 +45,7 @@ const Login = () => {
     <div className="hero min-h-screen bg-base-200 ">
       <div className="hero-content flex-col w-full ">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
+          <h1 className="text-5xl font-bold !text-black">Login now!</h1>
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleLoginEmail} className="card-body">
@@ -74,7 +73,7 @@ const Login = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
+                <a href="#" className="label-text-alt !text-black link link-hover">
                   Forgot password?
                 </a>
               </label>
@@ -84,7 +83,7 @@ const Login = () => {
             </div>
           </form>
           <div className="">
-            <p className="flex justify-center font-sans text-sm font-light leading-normal text-inherit antialiased">
+            <p className="flex justify-center font-sans !text-black text-sm font-light leading-normal text-inherit antialiased">
               Don't have an account?
               <Link to="/register">
                 <p className="text-red-600 ml-2 font-bold">Sing up</p>
