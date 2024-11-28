@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import Swal from "sweetalert2";
 import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
 
 
 const Register = () => {
@@ -49,10 +49,10 @@ const Register = () => {
             
         });
       })
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //     Swal.fire("Sorry", "Something wrong", "error");
-    //   });
+      .catch((error) => {
+        console.log(error.message);
+        Swal.fire("Sorry", "Something wrong", "error");
+      });
       form.reset();
   };
   return (
