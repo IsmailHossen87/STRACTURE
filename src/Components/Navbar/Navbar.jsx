@@ -1,14 +1,13 @@
+import { useContext, useState } from "react";
 import { AiOutlinePoweroff } from "react-icons/ai";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import Swal from "sweetalert2";
 import pf from "../../assets/3135715.png";
 import logo from "../../assets/chanel_logo_the_branding_journal.jpg";
-import { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
-import Swal from "sweetalert2";
 
-
-const Header = () => {
+const Navbar = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [toggle, setToggle] = useState(false);
   const { user, logOut } = useContext(AuthContext);
@@ -22,7 +21,7 @@ const Header = () => {
         <NavLink to="/addProduct">Add Product</NavLink>
       </li>
       <li>
-        <NavLink to="/addCart"> My Cart</NavLink>
+        <NavLink to="/myCart"> My Cart</NavLink>
       </li>
       <li>
         <NavLink to="/aboutDetails">About</NavLink>
@@ -46,21 +45,27 @@ const Header = () => {
   return (
     <div className={`navbar ${isDarkMode ? "dark-mode" : "bg-base-100"}`}>
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown ">
           <button
             className="btn btn-ghost lg:hidden"
             onClick={() => setToggle(!toggle)}
           >
-            {toggle ? <IoMdClose className="text-2xl" /> : <IoMdMenu className="text-2xl" />}
+            {toggle ? (
+              <IoMdClose className="text-2xl" />
+            ) : (
+              <IoMdMenu className="text-2xl" />
+            )}
           </button>
-          {toggle && (
-            <ul
-              className="menu menu-sm dropdown-content mt-1 z-[1] p-2 shadow rounded-box w-36 bg-black text-white"
-              onClick={() => setToggle(false)}
-            >
-              {links}
-            </ul>
-          )}
+          <div className="">
+            {toggle && (
+              <ul
+                className="dropdown-content md:w-[82vh] w-[66vh] left-0 mt-1 z-[1] p-2 shadow rounded-box border bg-black menu menu-sm  text-white"
+                onClick={() => setToggle(false)}
+              >
+                {links}
+              </ul>
+            )}
+          </div>
         </div>
         <img src={logo} className="w-16 hidden lg:block" alt="" />
       </div>
@@ -107,4 +112,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Navbar;
