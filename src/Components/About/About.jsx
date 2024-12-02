@@ -15,7 +15,7 @@ const About = () => {
         <div className="hero-overlay bg-opacity-40"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold text-white">
+            <h1 className="mb-5 md:text-5xl text-2xl font-bold text-white">
               Details Information
             </h1>
            <Link to='/aboutDetails'> 

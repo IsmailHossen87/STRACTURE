@@ -43,7 +43,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`navbar ${isDarkMode ? "dark-mode" : "bg-base-100"}`}>
+    <div className={`navbar ${isDarkMode ? "dark-mode" : "bg-base-100"}backdrop-blur-xl bg-white/65 sticky z-50 top-0`}>
       <div className="navbar-start">
         <div className="dropdown ">
           <button
@@ -59,7 +59,7 @@ const Navbar = () => {
           <div className="">
             {toggle && (
               <ul
-                className="dropdown-content md:w-[82vh] w-[66vh] left-0 mt-1 z-[1] p-2 shadow rounded-box border bg-black menu menu-sm  text-white"
+                className="dropdown-content md:w-[98vw] w-[95vw] left-0 mt-1 z-[1] p-2 shadow rounded-box border bg-black menu menu-sm  text-white"
                 onClick={() => setToggle(false)}
               >
                 {links}
